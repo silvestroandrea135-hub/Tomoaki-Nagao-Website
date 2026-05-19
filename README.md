@@ -1,108 +1,42 @@
 # Nigo Collezioni Moda
 
-Piattaforma web per la gestione e catalogazione di collezioni di moda di Tomoaki Nagao (Nigo), leggendario designer giapponese e fondatore di A Bathing Ape.
+Piattaforma web dinamica dedicata alla catalogazione e alla gestione strutturata delle collezioni di moda di **Tomoaki Nagao (Nigo)**, celebre designer giapponese e fondatore di *A Bathing Ape*. 
 
-## Descrizione Progetto
+Il progetto è stato sviluppato con l'obiettivo di implementare un'applicazione modulare che rispetti i criteri di separazione delle responsabilità, la gestione sicura delle sessioni utente e l'interazione dinamica con database relazionali.
 
-L'applicazione consente di visualizzare, organizzare e gestire un catalogo di collezioni di moda. Gli utenti standard possono registrarsi, accedere al profilo, visualizzare collezioni e filtrarle per brand e stagione. Gli amministratori dispongono di un pannello di controllo per aggiungere, modificare ed eliminare collezioni, nonché gestire gli utenti della piattaforma.
+---
 
-## Architettura
+## 🚀 Architettura e Funzionalità
 
-Il progetto implementa un'architettura web tradizionale a tre livelli:
+L'applicazione si basa su un'architettura a tre livelli (**3-Tier Architecture**) che separa nettamente la logica di presentazione, la logica di business e la persistenza dei dati.
 
-**Backend**: PHP 8.2+ che gestisce autenticazione, sessioni, validazione e operazioni CRUD sul database.
+### 1. Area Pubblica e Utente Standard
+Offre un'interfaccia fluida per la consultazione pubblica del catalogo storico:
+* **Autenticazione di Sessione:** Sistema di registrazione e login sicuro gestito interamente lato server tramite sessioni PHP nativizzate.
+* **Catalogo e Filtri Avanzati:** Gli utenti possono esplorare l'archivio delle collezioni utilizzando un sistema di ricerca testuale e filtri dinamici per *Brand* e *Stagione*.
+* **Area Personale:** Sezione profilo personalizzata con la possibilità di salvare le collezioni tra i propri *Preferiti*.
 
-**Database**: MySQL/MariaDB con due tabelle relazionali (utente e collezioni) per la persistenza dei dati.
+### 2. Pannello Amministrativo (Back-Office)
+Una dashboard protetta e riservata agli amministratori di sistema per il controllo dei contenuti:
+* **Gestione CRUD Integrata:** Interfaccia grafica dedicata per creare, leggere, aggiornare e cancellare le collezioni direttamente nel database.
+* **Controllo Utenti:** Strumenti per monitorare gli iscritti alla piattaforma e gestirne i ruoli di accesso.
 
-**Frontend**: HTML5 semantico con CSS3 per la presentazione dell'interfaccia utente nel browser.
+---
 
-La comunicazione tra i livelli avviene tramite HTTP/HTTPS, con PHP che elabora le richieste POST/GET e restituisce risposte HTML.
+## 🛠️ Stack Tecnologico e Database
 
-## Tecnologie Utilizzate
+* **Backend:** **PHP 8.2+** – Gestisce la logica di business, il routing delle richieste HTTP (GET/POST), la validazione dei dati e il controllo degli accessi su ogni pagina protetta.
+* **Database:** **MySQL / MariaDB** – Struttura relazionale ottimizzata composta da due entità principali:
+  * `utente`: Memorizza credenziali e livello di privilegio (`0` per utente standard, `1` per amministratore).
+  * `collezioni`: Cataloga i manufatti con dettagli su titolo, brand, stagione e link di riferimento.
+* **Frontend:** **HTML5 Semantico & CSS3** – Layout pulito e responsivo, arricchito da una scelta tipografica accurata basata sui caratteri custom *Bodoni* e *Futura*.
+* **Web Server:** Supporto nativo per ambienti **Apache** o **Nginx**.
 
-| Componente | Tecnologia |
-|-----------|-----------|
-| Backend | PHP 8.2+ |
-| Database | MySQL/MariaDB 10.4+ |
-| Frontend | HTML5, CSS3 |
-| Typography | Font custom (Bodoni, Futura) |
-| Server | Apache/Nginx |
+---
 
-## Funzionalità
+## 🔒 Approccio alla Sicurezza e Sviluppi Futuri
 
-**Utenti Standard**:
-- Registrazione e login
-- Visualizzazione catalogo collezioni
-- Ricerca e filtri (brand, stagione)
-- Profilo personalizzato
-- Salvataggio preferiti
-
-**Amministratori**:
-- Pannello di controllo completo
-- Gestione collezioni (CRUD)
-- Gestione utenti
-- Modifica contenuti
-
-## Struttura Database
-
-**Tabella utente**: Memorizza credenziali, dati profilo e ruolo (0 = utente, 1 = admin)
-
-**Tabella collezioni**: Memorizza catalogo con titolo, brand, stagione e link di riferimento
-
-## Installazione
-
-### Prerequisiti
-- PHP 8.2+
-- MySQL/MariaDB
-- Server web (Apache/Nginx)
-
-### Setup
-
-```bash
-# Clona il repository
-git clone https://github.com/andreasilvestro/nigo-collezioni-moda.git
-cd nigo-collezioni-moda
-
-# Importa il database
-mysql -u root -p < moda.sql
-
-# Configura connessione.php
-# Modifica le credenziali del database
-
-# Avvia l'applicazione
-php -S localhost:8000
-```
-
-Accedi a http://localhost:8000
-
-## Credenziali di Test
-
-**Admin**:
-- Username: silver
-- Password: amministratore
-
-**User**:
-- Username: papera
-- Password: paperone
-
-## Pattern Implementativi
-
-**Session Management**: Autenticazione basata su sessioni server-side con verifica dello stato su ogni pagina protetta.
-
-**CRUD Operations**: Operazioni di creazione, lettura, aggiornamento e eliminazione distribute tra file PHP dedicati.
-
-**Separazione Responsabilità**: Divisione tra livello presentazione (template HTML), logica applicativa (elaborazione dati) e accesso dati (query database).
-
-**Input Validation**: Sanitizzazione input tramite mysqli_real_escape_string() per prevenire SQL injection.
-
-## Note di Sicurezza
-
-Il progetto utilizza mysqli_real_escape_string() per la protezione dalle SQL injection. Per ambienti production si consiglia:
-
-- Prepared statements al posto di escape string
-- Password hashing con bcrypt
-- HTTPS
-- CSRF tokens
-- Validazione lato server rigorosa
-
-## Struttura Progetto
+Attualmente il progetto implementa controlli preventivi sulla validazione degli input e sulla gestione delle sessioni. Per una futura transizione in ambienti di produzione reali, la roadmap prevede i seguenti upgrade architetturali:
+1. **Prepared Statements:** Migrazione del livello di accesso ai dati (DAL) verso costrutti PDO per l'azzeramento strutturale del rischio di SQL Injection.
+2. **Password Hashing:** Integrazione dell'algoritmo crittografico `bcrypt` (tramite la funzione nativa `password_hash()`) per l'archiviazione sicura delle credenziali.
+3. **Protezione CSRF:** Implementazione di token univoci per la messa in sicurezza dei form transazionali.
