@@ -1,88 +1,108 @@
-# Portfolio Collezioni Moda - Tomoaki Nagao (Nigo) 🎨👗
+# Nigo Collezioni Moda
 
-Una piattaforma web dedicata alla gestione e catalogazione delle collezioni di moda di **Tomoaki Nagao**, meglio conosciuto come **Nigo**, leggendario designer giapponese e icona della streetwear mondiale.
+Piattaforma web per la gestione e catalogazione di collezioni di moda di Tomoaki Nagao (Nigo), leggendario designer giapponese e fondatore di A Bathing Ape.
 
-## 👤 Chi è Nigo (Tomoaki Nagao)?
+## Descrizione Progetto
 
-**Tomoaki Nagao**, nome d'arte **Nigo**, è uno dei designer e stilisti giapponesi più influenti del mondo contemporaneo. Nato a Chiba, Giappone, ha rivoluzionato la moda globale con la sua visione unica e innovativa.
+L'applicazione consente di visualizzare, organizzare e gestire un catalogo di collezioni di moda. Gli utenti standard possono registrarsi, accedere al profilo, visualizzare collezioni e filtrarle per brand e stagione. Gli amministratori dispongono di un pannello di controllo per aggiungere, modificare ed eliminare collezioni, nonché gestire gli utenti della piattaforma.
 
-### 🏆 Credenziali
+## Architettura
 
-| Aspetto | Dettagli |
-|---------|----------|
-| **Nome Completo** | Tomoaki Nagao |
-| **Nome Artistico** | Nigo |
-| **Nazionalità** | 🇯🇵 Giapponese |
-| **Campo** | Fashion Design, Streetwear, Luxury |
-| **Stile** | Streetwear, Hip-hop culture, Luxury fusion |
+Il progetto implementa un'architettura web tradizionale a tre livelli:
 
-### 💼 Carriera e Creazioni Principali
+**Backend**: PHP 8.2+ che gestisce autenticazione, sessioni, validazione e operazioni CRUD sul database.
 
-#### 1️⃣ **A Bathing Ape (BAPE)** - Il Capolavoro
-Fondato nel **1993**, A Bathing Ape è il marchio che ha reso Nigo una leggenda:
+**Database**: MySQL/MariaDB con due tabelle relazionali (utente e collezioni) per la persistenza dei dati.
 
-- 🦍 **Iconic Logo**: La celebre "APE HEAD" (testa di scimmia)
-- 🔴 **Signature Camo**: Il pattern mimetico distintivo di BAPE
-- 👟 **Collaborazioni Leggendarie**: 
-  - Nike Air Force 1 (BAPE x Nike)
-  - Adidas collaborations
-  - Collaborazioni con artisti hip-hop
-- 🌍 **Impatto Globale**: Ha reso lo streetwear giapponese un fenomeno mondiale
-- 📍 **Flagship Stores**: Presenti in Giappone, USA, Europa
+**Frontend**: HTML5 semantico con CSS3 per la presentazione dell'interfaccia utente nel browser.
 
-#### 2️⃣ **Kenzo** - Fashion Luxury
-Nigo ha assunto la posizione di **Creative Director di Kenzo** a partire da **2022**, portando la sua visione streetwear nel mondo del luxury:
+La comunicazione tra i livelli avviene tramite HTTP/HTTPS, con PHP che elabora le richieste POST/GET e restituisce risposte HTML.
 
-- 👗 **Collezioni Stagionali**: Fusion tra streetwear giapponese e lusso francese
-- 🎨 **Stile Unico**: Mantiene l'identità BAPE anche nelle creazioni Kenzo
-- 🏅 **Riconoscimento Internazionale**: Acclamato dalla critica di moda mondiale
-
-#### 3️⃣ Altre Collaborazioni Iconiche
-- **BAPE x Adidas**: Collab streetwear/sportswear
-- **BAPE x Nike**: Le leggendarie sneaker customizzate
-- **Collaborazioni con Artisti Hip-Hop**: Notorious B.I.G., Jay-Z, Pharrell Williams
-- **Human Made**: Brand subsidiary focalizzato su qualità e craftsmanship
-
-### 🎯 Influenza sulla Cultura Globale
-
-Nigo ha influenzato profondamente:
-- 🎵 **Hip-Hop Culture**: È diventato simbolo della moda hip-hop internazionale
-- 👟 **Sneaker Culture**: Ha elevato le sneaker a status symbol
-- 🌏 **Moda Giapponese**: Ha portato la streetwear giapponese nel mainstream globale
-- 💎 **Luxury Streetwear**: Ha coniato il concetto di "luxury casual wear"
-
-### 📜 Riconoscimenti
-- Influencer numero 1 nella moda streetwear
-- Forbes 30 Under 30 (Fashion)
-- Creatore di uno dei brand più copiati della storia
-- Mentore di innumerevoli designer contemporanei
-
----
-
-## ✨ Caratteristiche della Piattaforma
-
-- 👤 **Profilo Nigo**: Biografia e informazioni dettagliate dello stilista
-- 📂 **Catalogazione Collezioni**: Organizza gli outfit per:
-  - 🏢 **Brand**: BAPE, Kenzo, Nike, Adidas, Human Made, ecc.
-  - 🌍 **Stagione**: Primavera, Estate, Autunno, Inverno
-  - 🎨 **Stile**: Sport, Casual, Classic, Monocromo, Crop, ecc.
-- 🔍 **Ricerca Avanzata**: Trova facilmente collezioni e capi
-- 👥 **Profili Utente**: Crea account personalizzati
-- ⭐ **Salva Preferiti**: Raccogli le tue collezioni preferite
-- 🛡️ **Pannello Admin**: Gestione completa di contenuti e utenti
-- 📱 **Design Responsive**: Ottimizzato per tutti i dispositivi
-
-## 🛠️ Stack Tecnologico
+## Tecnologie Utilizzate
 
 | Componente | Tecnologia |
 |-----------|-----------|
-| **Backend** | PHP 8.2+ |
-| **Database** | MySQL/MariaDB 10.4+ |
-| **Frontend** | HTML5, CSS3 Semantico |
-| **Typography** | Bodoni, Futura (font di lusso) |
-| **Server** | Apache/Nginx |
-| **Browser Support** | Chrome, Firefox, Safari, Edge |
+| Backend | PHP 8.2+ |
+| Database | MySQL/MariaDB 10.4+ |
+| Frontend | HTML5, CSS3 |
+| Typography | Font custom (Bodoni, Futura) |
+| Server | Apache/Nginx |
 
-## 📊 Struttura del Database
+## Funzionalità
 
-### Tabella `utente`
+**Utenti Standard**:
+- Registrazione e login
+- Visualizzazione catalogo collezioni
+- Ricerca e filtri (brand, stagione)
+- Profilo personalizzato
+- Salvataggio preferiti
+
+**Amministratori**:
+- Pannello di controllo completo
+- Gestione collezioni (CRUD)
+- Gestione utenti
+- Modifica contenuti
+
+## Struttura Database
+
+**Tabella utente**: Memorizza credenziali, dati profilo e ruolo (0 = utente, 1 = admin)
+
+**Tabella collezioni**: Memorizza catalogo con titolo, brand, stagione e link di riferimento
+
+## Installazione
+
+### Prerequisiti
+- PHP 8.2+
+- MySQL/MariaDB
+- Server web (Apache/Nginx)
+
+### Setup
+
+```bash
+# Clona il repository
+git clone https://github.com/andreasilvestro/nigo-collezioni-moda.git
+cd nigo-collezioni-moda
+
+# Importa il database
+mysql -u root -p < moda.sql
+
+# Configura connessione.php
+# Modifica le credenziali del database
+
+# Avvia l'applicazione
+php -S localhost:8000
+```
+
+Accedi a http://localhost:8000
+
+## Credenziali di Test
+
+**Admin**:
+- Username: silver
+- Password: amministratore
+
+**User**:
+- Username: papera
+- Password: paperone
+
+## Pattern Implementativi
+
+**Session Management**: Autenticazione basata su sessioni server-side con verifica dello stato su ogni pagina protetta.
+
+**CRUD Operations**: Operazioni di creazione, lettura, aggiornamento e eliminazione distribute tra file PHP dedicati.
+
+**Separazione Responsabilità**: Divisione tra livello presentazione (template HTML), logica applicativa (elaborazione dati) e accesso dati (query database).
+
+**Input Validation**: Sanitizzazione input tramite mysqli_real_escape_string() per prevenire SQL injection.
+
+## Note di Sicurezza
+
+Il progetto utilizza mysqli_real_escape_string() per la protezione dalle SQL injection. Per ambienti production si consiglia:
+
+- Prepared statements al posto di escape string
+- Password hashing con bcrypt
+- HTTPS
+- CSRF tokens
+- Validazione lato server rigorosa
+
+## Struttura Progetto
